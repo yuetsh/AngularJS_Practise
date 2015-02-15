@@ -6,9 +6,17 @@
     <link rel="stylesheet" href="../bootstrap.min.css"/>
 </head>
 <body ng-app>
-<h2>#1</h2>
-<input type="text" ng-model="hello.text"/>
-<p>{{hello.text}},world</p>
+<h1 style="text-align: center">#1: binding</h1>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <input class="form-control "  type="text" ng-model="hello.text"/>
+            <h1 style="text-align: center">{{hello.text}},world</h1>
+        </div>
+    </div>
+</div>
+
 <script src="../angular.min.js"></script>
 </body>
 </html>
