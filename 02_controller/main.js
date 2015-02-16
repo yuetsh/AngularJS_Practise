@@ -1,6 +1,7 @@
 /**
  * Created by Saber on 2015/2/16.
  */
-function dataCtrl() {
-    $scope.data = 'john';
-}
+var dataApp = angular.module('dataApp', []);
+dataApp.controller('dataCtrl', function ($scope) {
+   $scope.data = 'helloMainJs';
+});

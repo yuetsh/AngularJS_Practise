@@ -1,28 +1,53 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>03_dot</title>
     <script src="../angular.min.js"></script>
     <link rel="stylesheet" href="../bootstrap.min.css"/>
+
+    <script>
+        var firstApp = angular.module('firstApp', []);
+        firstApp.controller('firstCtrl', function ($scope) {
+            $scope.firstName = 'JavaScript';
+        });
+    </script>
+
 </head>
-<body ng-app="">
+<body>
 <div>
-    <div class="container">
+    <div class="container" ng-app="firstApp">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <h1 style="text-align: center">#3 dot</h1>
-                <input type="text" class="form-control" ng-model="data"/>
-                <h2>{{data}}</h2>
 
-                <input type="text" class="form-control" ng-model="data"/>
-                <h2>{{data}}</h2>
+                <div ng-controller="firstCtrl">
+                    <h2>Hello {{firstName}}</h2>
+                </div>
 
-                <input type="text" class="form-control" ng-model="data"/>
-                <h2>{{data}}</h2>
             </div>
         </div>
     </div>
 </div>
 </body>
 </html>
+
+
+<!--<html ng-app="nameApp">-->
+<!--<head>-->
+<!--<meta charset="utf-8">-->
+<!--<title>Angular.js Example</title>-->
+<!--<script src="../angular.min.js"></script>-->
+<!--<link rel="stylesheet" href="../bootstrap.min.css"/>-->
+<!--<script>-->
+<!--var nameApp = angular.module('nameApp', []);-->
+<!--nameApp.controller('NameCtrl', function ($scope) {-->
+<!--$scope.firstName = '1';-->
+<!--$scope.lastName = '2';-->
+<!--});-->
+<!--</script>-->
+<!--</head>-->
+<!--<body ng-controller="NameCtrl">-->
+<!--<h1>Hello {{firstName}} {{lastName}}</h1>-->
+<!--</body>-->
+<!--</html>-->
