@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+    <link rel="stylesheet" href="../bootstrap.min.css"/>
+</head>
+<body>
+<div ng-init="citys = ['beijing','shanghai','nanjing','guangzhou','shenzhen','hangzhou',
+                       'tianjing','chengdu','datong','yangzhou','taiyuan','suzhou','yunnan']"></div>
+<h1>list(filter)</h1>
+<input type="text" class="form-control" style="width: 250px;" ng-model="city"/>
+<ul>
+    <li ng-repeat="cityName in citys | filter: city"><h4>{{ cityName }}</h4></li>
+</ul>
+<script src="../angular.min.js"></script>
+</body>
+</html>
