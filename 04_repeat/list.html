@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>class_04</title>
+    <link rel="stylesheet" href="../bootstrap.min.css"/>
+</head>
+<body>
+<div ng-init="names = ['name01','name02','name03','name04']"></div>
+<h1>list(repeat test)</h1>
+<ul>
+    <li ng-repeat="name in names"><h2>{{name}}</h2></li>
+</ul>
+<script src="../angular.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>shopping</title>
+    <link rel="stylesheet" href="../bootstrap.min.css"/>
+</head>
+<body>
+<h1>quantity*costs</h1>
+<div ng-init="quantity=1;costs=1">
+    <h2>quantity:</h2>
+    <input type="number" class="form-control" ng-model="quantity"/>
+    <h2>costs:</h2>
+    <input type="number" class="form-control" ng-model="costs"/>
+    <h2><b>TOTAL:</b>{{ quantity * costs | currency}}</h2>
+</div>
+<script src="../angular.min.js"></script>
+</body>
+</html>
