@@ -1,23 +1,52 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="dataApp">
 <head>
     <meta charset="UTF-8">
     <title>AngularJS_Practise</title>
     <link rel="stylesheet" href="../bootstrap.min.css"/>
-    <script src="main.js"></script>
+    <script src="../angular.min.js"></script>
+    <script>
+        var dataApp = angular.module('dataApp',[]);
+        dataApp.controller('dataCtrl',function($scope){
+           $scope.data = 'hello';
+        });
+    </script>
 </head>
-<body ng-app>
+<body>
 <h1 style="text-align: center">#2: controller</h1>
 <br/>
+<div ng-controller="dataCtrl">
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3" ng-controller="firstCtrl">
-            <!--<input class="form-control" type="text"/>-->
-            <h2>{{data.message + "world!"}}</h2>
+        <div class="col-md-6 col-md-offset-3">
+            <h2>{{data}}</h2>
         </div>
     </div>
 </div>
+</div>
 
-<script src="../angular.min.js"></script>
 </body>
 </html>
+
+<!--<html ng-app="nameApp">-->
+<!--<head>-->
+    <!--<meta charset="utf-8">-->
+    <!--<title>Angular.js Example</title>-->
+    <!--<link rel="stylesheet" href="../bootstrap.min.css"/>-->
+    <!--<script src="../angular.min.js"></script>-->
+    <!--<script>-->
+        <!--var nameApp = angular.module('nameApp', []);-->
+        <!--nameApp.controller('NameCtrl', function ($scope){-->
+            <!--$scope.firstName = 'John';-->
+            <!--$scope.lastName = 'Smith';-->
+        <!--});-->
+    <!--</script>-->
+<!--</head>-->
+<!--<body ng-controller="NameCtrl">-->
+<!--First name:<input ng-model="firstName" type="text"/>-->
+<!--<br>-->
+<!--Last name:<input ng-model="lastName" type="text"/>-->
+<!--<br>-->
+<!--Hello {{firstName}} {{lastName}}-->
+<!--</body>-->
+<!--</html>-->
