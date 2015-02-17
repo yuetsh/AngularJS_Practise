@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+    <link rel="stylesheet" href="../bootstrap.min.css"/>
+</head>
+<body ng-controller="addNameCtrl">
+<div class="container">
+    <div class="row">
+        <h1>list(add)</h1>
+        <ul>
+            <li ng-repeat="city in citys"><h4>{{city}}</h4></li>
+        </ul>
+        <form>
+            <input type="text" class="form-control" ng-model="addCity" style="width: 150px;"/>
+            <button class="btn btn-default" ng-click="addName()"/>
+            ADD</button>
+        </form>
+    </div>
+</div>
+
+<script src="../angular.min.js"></script>
+<script>
+    var myApp = angular.module('myApp', []);
+    myApp.controller('addNameCtrl', function ($scope) {
+        $scope.citys = ['beijing', 'shanghai', 'nanjing', 'guangzhou', 'shenzhen', 'hangzhou'];
+
+        $scope.addName = function () {
+            if ($scope.addCity) {
+                $scope.citys.push($scope.addCity);
+            }
+            $scope.addCity = null;
+        };
+    });
+</script>
+
+</body>
+</html>
