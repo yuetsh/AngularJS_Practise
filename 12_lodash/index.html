@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lodash</title>
+  </head>
+  <body>
+    <h1>Lodash, Watch the Console</h1>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script>
+      var people = [
+        {
+          name: 'Tom',
+          age: 20,
+          deposit: 300
+        }, {
+          name: 'Tom',
+          age: 22,
+          deposit: 200
+        }, {
+          name: 'Tom Senior',
+          age: 50,
+          deposit: 200
+        }, {
+          name: 'May',
+          age: 21,
+          deposit: 300
+        }, {
+          name: 'Jack',
+          age: 20,
+          deposit: 100
+        }, {
+          name: 'Jack',
+          age: 24,
+          deposit: 100
+        }, {
+          name: 'Jack',
+          age: 29,
+          deposit: 50
+        }, {
+          name: 'Bob',
+          age: 56,
+          deposit: 10
+        }, {
+          name: 'Yue',
+          age: 13,
+          deposit: 300
+        }, {
+          name: 'Alice',
+          age: 41,
+          deposit: 300
+        }
+      ];
+      // Map
+      var result = _.chain(people).map('name').join(', ').value();
+      console.log(result);
+
+      var result = _.map(people, function(item) {
+          return item.name;
+        });
+      console.log(result);
+
+      var result = _.take(people, 3).map(function(item) {
+        return item.name
+      });
+      console.log(result);
+
+      var result = _.chain(people).sortBy('age').map('name').first().value();
+      console.log('最小的是' + result);
+
+      var result = _.chain(people).sortBy('age').map(function (item) {
+        return '最大的是' + item.name + '，有' + item.age + '岁';
+      }).last().value();
+      console.log(result);
+
+      // Reduce
+
+      // find  => Returns the matched **element**, else undefined.
+      var result = _.result(_.find(people, {'name': 'Jack'}), 'name');
+      console.log(result);
+
+      var result =  _.result(_.find(people, {'name': 'Yue'}), 'age');
+      console.log(result);
+
+      var result = _.find(people, 'name', 'Yue');
+      console.log(result);
+
+      var result = _.result(_.find(people, function (item) {
+        return  item.age < 50;
+      }), 'name');
+      console.log(result);
+
+      // filter => Returns the new filtered **array**.
+      var result = _.pluck(_.filter(people, {'name': 'Tom', 'age': 20}), 'deposit');
+      console.log(result);
+
+      // findWhere => Returns the matched element, else undefined.
+      var result = _.findWhere(people, {'name': 'Tom', 'deposit': 200});
+      console.log(result);
+
+      var result = _.result(_.findWhere(people, {'name': 'Tom', 'deposit': 200}), 'age');
+      console.log(result);
+
+      // findIndex
+      // var result =
+    </script>
+
+    <script src="http://localhost:35729/livereload.js"></script>
+  </body>
+</html>
