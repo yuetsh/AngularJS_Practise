@@ -9,6 +9,7 @@
     <div class="ui center aligned two column grid very padded" ng-controller='FilterCtrl'>
       <div class="column">
         <h1>angularjs内置的filter</h1>
+
         <article class="ui stacked segment">
 
           <div class="ui segment">
@@ -17,6 +18,9 @@
             <br>
             filter:
             {{date | date: 'yyyy-mm-dd'}}
+            <br>
+            controller:
+            {{test}}
           </div>
           <div class="three column ui grid segment">
             <div class="row centered">
@@ -61,84 +65,99 @@
             </div>
             <div class="column">
               <!-- 按照 $index 倒序 -->
-              <div ng-repeat="item in list.slice().reverse()">
+              <div </div is ng-repeat="item in list.slice().reverse()">
                 {{item.name}}
                 is
                 {{item.age}}
                 years old
               </div>
             </div>
-          </div>
-
-        </article>
+          </article>
+        </div>
+        <div class="column">
+          <h1>自定义filter</h1>
+          <article class="ui stacked segment">
+            <div class="ui segment">
+              <div class="ui input">
+                <input ng-model="url" placeholder="Which Search Engine..." type="text">
+              </div>
+              <div> {{url | UrlFilter}} </div>
+            </div>
+          </article>
+        </div>
       </div>
-      <div class="column">
-        <h1>自定义filter</h1>
-        <article class="ui stacked segment">
-          <div class="ui segment"></div>
-        </article>
-      </div>
-    </div>
-    <script src="../angular.min.js"></script>
-    <script src="../semantic.min.js"></script>
-    <!-- <script scr="../config.js"></script>
+      <script src="../angular.min.js"></script>
+      <script src="../semantic.min.js"></script>
+      <!-- <script scr="../config.js"></script>
     <script scr="../jspm_packages/system.js"></script>
 
     <script>
       System.import('semantic-org/semantic-ui');
     </script> -->
 
-    <script type="text/javascript">
-      var filter = angular.module('filter', []);
-      filter.controller('FilterCtrl', [
-        '$scope', function($scope) {
-          $scope.date = new Date();
-          $scope.list = [
-            {
-              name: 'Tom',
-              age: 20,
-              deposit: 300
-            }, {
-              name: 'Tom',
-              age: 22,
-              deposit: 200
-            }, {
-              name: 'Tom Senior',
-              age: 50,
-              deposit: 200
-            }, {
-              name: 'May',
-              age: 21,
-              deposit: 300
-            }, {
-              name: 'Jack',
-              age: 20,
-              deposit: 100
-            }, {
-              name: 'Jack',
-              age: 24,
-              deposit: 100
-            }, {
-              name: 'Jack',
-              age: 29,
-              deposit: 50
-            }, {
-              name: 'Jack',
-              age: 56,
-              deposit: 10
-            }, {
-              name: 'Jack',
-              age: 13,
-              deposit: 300
-            }, {
-              name: 'Alice',
-              age: 41,
-              deposit: 300
+      <script type="text/javascript">
+        var filter = angular.module('filter', []);
+        filter
+          .controller('FilterCtrl', function($scope, $filter) {
+            $scope.date = new Date();
+            $scope.list = [
+              {
+                name: 'Tom',
+                age: 20,
+                deposit: 300
+              }, {
+                name: 'Tom',
+                age: 22,
+                deposit: 200
+              }, {
+                name: 'Tom Senior',
+                age: 50,
+                deposit: 200
+              }, {
+                name: 'May',
+                age: 21,
+                deposit: 300
+              }, {
+                name: 'Jack',
+                age: 20,
+                deposit: 100
+              }, {
+                name: 'Jack',
+                age: 24,
+                deposit: 100
+              }, {
+                name: 'Jack',
+                age: 29,
+                deposit: 50
+              }, {
+                name: 'Jack',
+                age: 56,
+                deposit: 10
+              }, {
+                name: 'Jack',
+                age: 13,
+                deposit: 300
+              }, {
+                name: 'Alice',
+                age: 41,
+                deposit: 300
+              }
+            ];
+
+            $scope.test = $filter('date')(new Date());
+          });
+
+        filter
+          .filter('UrlFilter', function() {
+            return function(url) {
+              if (url) {
+                return 'https://' + url
+              } else {
+                return 'https://www.google.com'
+              }
             }
-          ]
-        }
-      ]);
-    </script>
-    <script src="http://localhost:35729/livereload.js"></script>
-  </body>
-</html>
+          })
+      </script>
+      <script src="http://localhost:35729/livereload.js"></script>
+    </body>
+  </html>
