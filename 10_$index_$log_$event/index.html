@@ -50,7 +50,7 @@
   <script src="../angular.min.js"></script>
   <script>
     var event = angular.module('event', []);
-    event.controller('EventCtrl', function($scope) {
+    event.controller('EventCtrl',['$scope', function($scope) {
       $scope.name = 'Click Me, and Watch the Console:';
       $scope.toggle = false;
       $scope.ViewLog = function($event) {
@@ -60,7 +60,7 @@
         $scope.number = Math.random() * 100;
         console.log($scope.number);
       }
-    });
+    }]);
   </script>
 
   <script type="text/javascript" src="http://localhost:35729/livereload.js"></script>

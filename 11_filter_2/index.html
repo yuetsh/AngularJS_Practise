@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html ng-app='filter'>
+  <head>
+    <meta charset="utf-8">
+    <title>filter</title>
+    <link charset="utf-8" href="../semantic.min.css" media="screen" rel="stylesheet" title="no title">
+  </head>
+  <body>
+    <div class="ui center aligned two column grid very padded" ng-controller='FilterCtrl'>
+      <div class="column">
+        <h1>angularjs内置的filter</h1>
+        <article class="ui stacked segment">
+
+          <div class="ui segment">
+            date:
+            {{date}}
+            <br>
+            filter:
+            {{date | date: 'yyyy-mm-dd'}}
+          </div>
+          <div class="three column ui grid segment">
+            <div class="row centered">
+              <h2>list</h2>
+            </div>
+            <div class="column">
+              <!-- 年龄倒叙 -->
+              <div ng-repeat="item in list | orderBy: '-age'">
+                {{item.name}}
+                is
+                {{item.age}}
+                years old
+              </div>
+            </div>
+            <div class="column">
+              <!-- 名字正序，年龄倒叙 -->
+              <div ng-repeat="item in list | orderBy:['name','-age']">
+                {{item.name}}
+                is
+                {{item.age}}
+                years old
+              </div>
+            </div>
+            <div class="column">
+              <!-- true 表示逆序，false 表示正序 -->
+              <div ng-repeat="item in list | orderBy:['name','-age']:true">
+                {{item.name}}
+                is
+                {{item.age}}
+                years old
+              </div>
+            </div>
+            <div class="column">
+              <!-- track 必须是放在最后 -->
+              <div ng-repeat="item in list | orderBy: 'name' track by $index">
+                {{$index + 1}}.
+                {{item.name}}
+                is
+                {{item.age}}
+                years old
+              </div>
+            </div>
+            <div class="column">
+              <!-- 按照 $index 倒序 -->
+              <div ng-repeat="item in list.slice().reverse()">
+                {{item.name}}
+                is
+                {{item.age}}
+                years old
+              </div>
+            </div>
+          </div>
+
+        </article>
+      </div>
+      <div class="column">
+        <h1>自定义filter</h1>
+        <article class="ui stacked segment">
+          <div class="ui segment"></div>
+        </article>
+      </div>
+    </div>
+    <script src="../angular.min.js"></script>
+    <script src="../semantic.min.js"></script>
+    <!-- <script scr="../config.js"></script>
+    <script scr="../jspm_packages/system.js"></script>
+
+    <script>
+      System.import('semantic-org/semantic-ui');
+    </script> -->
+
+    <script type="text/javascript">
+      var filter = angular.module('filter', []);
+      filter.controller('FilterCtrl', [
+        '$scope', function($scope) {
+          $scope.date = new Date();
+          $scope.list = [
+            {
+              name: 'Tom',
+              age: 20,
+              deposit: 300
+            }, {
+              name: 'Tom',
+              age: 22,
+              deposit: 200
+            }, {
+              name: 'Tom Senior',
+              age: 50,
+              deposit: 200
+            }, {
+              name: 'May',
+              age: 21,
+              deposit: 300
+            }, {
+              name: 'Jack',
+              age: 20,
+              deposit: 100
+            }, {
+              name: 'Jack',
+              age: 24,
+              deposit: 100
+            }, {
+              name: 'Jack',
+              age: 29,
+              deposit: 50
+            }, {
+              name: 'Jack',
+              age: 56,
+              deposit: 10
+            }, {
+              name: 'Jack',
+              age: 13,
+              deposit: 300
+            }, {
+              name: 'Alice',
+              age: 41,
+              deposit: 300
+            }
+          ]
+        }
+      ]);
+    </script>
+    <script src="http://localhost:35729/livereload.js"></script>
+  </body>
+</html>
